@@ -120,8 +120,12 @@ class Hotspot_For_Mikrotik_Public {
     public function get_login_page()
     {
         $defaults = array(
-            'username'   => ''
+            'username'   => '',
+            'error'      => '',
+            'trial'      => 'no'
         );
+        wp_register_style( 'mikrotik',  plugin_dir_url( __FILE__ ) . 'css/mikrotik.css', array(), $this->version, 'all' );
+        wp_register_script( 'mikrotik-md5', 'js/mikrotik-md5.js', array(), $this->version, false );
 	    $args = wp_parse_args( sanitize_post( $_REQUEST  ), $defaults );  // phpcs:ignore WordPress.Security.NonceVerification
         include plugin_dir_path( __DIR__ ) . 'templates' . DIRECTORY_SEPARATOR . 'login.php';
     }
