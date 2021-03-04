@@ -77,12 +77,12 @@ endif;
 					?>
 				</p>
 				<label>
-					<img class="ico" src="<?php echo plugin_dir_path( __DIR__ ) . 'assets/img/user.svg' ?>" alt="#" />
+					<img class="ico" src="<?php echo plugin_dir_url( __DIR__ ) . 'assets/img/user.svg' ?>" alt="#" />
 					<input name="username" type="text" value="<?php echo $args['username']; ?>" placeholder="Username" />
 				</label>
 
 				<label>
-					<img class="ico" src="<?php echo plugin_dir_path( __DIR__ ) . 'assets/img/password.svg' ?>" alt="#" />
+					<img class="ico" src="<?php echo plugin_dir_url( __DIR__ ) . 'assets/img/password.svg' ?>" alt="#" />
 					<input name="password" type="password" placeholder="Password" />
 				</label>
 
