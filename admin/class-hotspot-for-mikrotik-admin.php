@@ -100,4 +100,47 @@ class Hotspot_For_Mikrotik_Admin {
 
 	}
 
+	public function plugin_section_text() {
+
+    }
+
+    public function hotspot_admin_username_text() {
+        echo "Text";
+    }
+
+	/**
+	 * Register plugin settings
+	 *
+	 * @since    1.0.0
+	 */
+	public function register_settings() {
+		add_settings_section( 'router_settings', 'Router Settings', [ $this, 'plugin_section_text' ], 'mikrotik_hotspot_plugin' );
+
+		add_settings_field( 'hotspot_admin_username', 'Hotspot Admin Username', [ $this, 'hotspot_admin_username_text' ], 'mikrotik_hotspot_plugin', 'router_settings' );
+		register_setting( 'mikrotik_hotspot_plugin_options', 'hotspot_admin_username' );
+	}
+
+	/**
+	 * Add plugin settings page.
+	 *
+	 * @since    1.0.0
+	 */
+	public function add_settings_page() {
+		add_options_page( __('Mikrotik Hotspot Settings'), __('Mikrotik Hotspot'), 'manage_options', 'mikrotik-hotspot-settings', [ $this, 'render_settings_page' ] );
+	}
+
+	public function render_settings_page() {
+		?>
+        <div class="wrap">
+		<h1>Settings page title</h1>
+		<form action="options.php" method="post">
+			<?php
+			settings_fields( 'mikrotik_hotspot_plugin_options' );
+			do_settings_sections( 'mikrotik_hotspot_plugin' );
+            submit_button();
+            ?>
+		</form>
+        </div>
+		<?php
+	}
 }
