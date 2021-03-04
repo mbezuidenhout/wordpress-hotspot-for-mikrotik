@@ -1,0 +1,35 @@
+<html lang="en">
+<head><title>…</title></head>
+<body>
+$(if chap-id)
+<noscript>
+<b>JavaScript required. Please enable JavaScript to continue.</b>
+</noscript>
+$(endif)
+If you are not redirected within a few seconds please click on continue below<br>
+<form name="redirect" action="https://blackhorse.co.za/mikrotik/login" method="post">
+    <input type="hidden" name="mac" value="$(mac)">
+    <input type="hidden" name="trial" value="$(trial)">
+    <input type="hidden" name="hostname" value="$(hostname)">
+    <input type="hidden" name="server-address" value="$(server-address)">
+    <input type="hidden" name="plain-passwd" value="$(plain-passwd)">
+    <input type="hidden" name="ssl-login" value="$(ssl-login)">
+    <input type="hidden" name="username" value="$(username)">
+    <input type="hidden" name="url" value="$(link-login)">
+    <input type="hidden" name="link-orig" value="$(link-orig)">
+    <input type="hidden" name="error" value="$(error)">
+    <input type="hidden" name="chap-id" value="$(chap-id)">
+    <input type="hidden" name="chap-challenge" value="$(chap-challenge)">
+    <input type="hidden" name="link-login-only" value="$(link-login-only)">
+    <input type="hidden" name="link-orig-esc" value="$(link-orig-esc)">
+    <input type="hidden" name="mac-esc" value="$(mac-esc)">
+    <input type="hidden" name="ip" value="$(ip)">
+    <input type="submit" value="continue">
+</form>
+<script>
+<!--
+  document.redirect.submit();
+//-->
+</script>
+</body>
+</html>

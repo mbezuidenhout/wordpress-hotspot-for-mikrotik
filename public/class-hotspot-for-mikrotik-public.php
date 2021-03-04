@@ -103,7 +103,8 @@ class Hotspot_For_Mikrotik_Public {
     /**
      * Add routes used for event displays.
      */
-    public function add_routes() {
+    public function add_routes()
+    {
         if ( ! class_exists( 'WP_Route' ) ) {
             require_once plugin_dir_path( __DIR__ ) . 'includes' . DIRECTORY_SEPARATOR . 'class-wp-route.php';
         }
@@ -116,12 +117,13 @@ class Hotspot_For_Mikrotik_Public {
      *
      * @throws Exception
      */
-    public function get_login_page() {
+    public function get_login_page()
+    {
         $defaults = array(
             'username'   => '',
             'password'   => '',
             'product_id' => null,
         );
-        include plugin_dir_path( __DIR__ ) . 'templates' . DIR_SEPARATOR . 'login.php';
+        include plugin_dir_path( __DIR__ ) . 'templates' . DIRECTORY_SEPARATOR . 'login.php';
     }
 }

@@ -17,6 +17,8 @@
  * Plugin URI:        https://github.com/mbezuidenhout/wordpress-hotspot-for-mirkotik
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
+ * Requires at least: 4.9
+ * Tested up to:      5.6.2
  * Author:            Marius Bezuidenhout
  * Author URI:        https://profiles.wordpress.org/mbezuidenhout/
  * License:           GPL-2.0+
