@@ -120,10 +120,9 @@ class Hotspot_For_Mikrotik_Public {
     public function get_login_page()
     {
         $defaults = array(
-            'username'   => '',
-            'password'   => '',
-            'product_id' => null,
+            'username'   => ''
         );
+	    $args = wp_parse_args( sanitize_post( $_REQUEST  ), $defaults );  // phpcs:ignore WordPress.Security.NonceVerification
         include plugin_dir_path( __DIR__ ) . 'templates' . DIRECTORY_SEPARATOR . 'login.php';
     }
 }
