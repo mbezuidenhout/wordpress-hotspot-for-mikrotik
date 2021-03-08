@@ -89,8 +89,6 @@ endif;
 				<input type="submit" value="Connect" />
 
 			</form>
-			<p class="info bt">Powered by MikroTik RouterOS</p>
-
 		</div>
 	</div>
 </div>

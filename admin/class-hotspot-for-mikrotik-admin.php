@@ -100,12 +100,18 @@ class Hotspot_For_Mikrotik_Admin {
 
 	}
 
-	public function plugin_section_text() {
-
+	public function plugin_section_text( $section ) {
+        $test = 1;
     }
 
-    public function hotspot_admin_username_text() {
-        echo "Text";
+    public function mikrotik_hotspot_field( $args ) {
+	    global $wp_settings_fields;
+	    $options = get_option($args['label_for']);
+	    switch($args['type']) {
+            case 'text':
+	            echo "<input name=\"" . $args['label_for'] . "\" type=\"" . $args['type'] . "\" id=\"" . $args['label_for'] . "\" value=\"\" class=\"regular-text\">";
+	            break;
+	    }
     }
 
 	/**
@@ -116,8 +122,27 @@ class Hotspot_For_Mikrotik_Admin {
 	public function register_settings() {
 		add_settings_section( 'router_settings', 'Router Settings', [ $this, 'plugin_section_text' ], 'mikrotik_hotspot_plugin' );
 
-		add_settings_field( 'hotspot_admin_username', 'Hotspot Admin Username', [ $this, 'hotspot_admin_username_text' ], 'mikrotik_hotspot_plugin', 'router_settings' );
-		register_setting( 'mikrotik_hotspot_plugin_options', 'hotspot_admin_username' );
+		add_settings_field(
+		        'hotspot_admin_username',
+                'Hotspot Admin Username',
+                [ $this, 'mikrotik_hotspot_field' ],
+                'mikrotik_hotspot_plugin',
+                'router_settings',
+                [
+                    'label_for' => 'username',
+                    'type'      => 'text',
+                ] );
+		add_settings_field(
+            'hotspot_admin_password',
+            'Hotspot Admin Password',
+            [ $this, 'mikrotik_hotspot_field' ],
+            'mikrotik_hotspot_plugin',
+            'router_settings',
+            [
+                    'label_for' => 'password'
+            ]
+        );
+		register_setting( 'mikrotik_hotspot_plugin_options', 'mikrotik_hotspot_username' );
 	}
 
 	/**
@@ -129,10 +154,11 @@ class Hotspot_For_Mikrotik_Admin {
 		add_options_page( __('Mikrotik Hotspot Settings'), __('Mikrotik Hotspot'), 'manage_options', 'mikrotik-hotspot-settings', [ $this, 'render_settings_page' ] );
 	}
 
-	public function render_settings_page() {
+	public function render_settings_page( $args ) {
+	    global $wp_settings_sections;
 		?>
         <div class="wrap">
-		<h1>Settings page title</h1>
+		<h1><?php echo esc_html(get_admin_page_title()) ?></h1>
 		<form action="options.php" method="post">
 			<?php
 			settings_fields( 'mikrotik_hotspot_plugin_options' );

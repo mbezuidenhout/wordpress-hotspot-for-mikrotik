@@ -1,0 +1,6 @@
+{
+    "require": {
+        "pear2/net_routeros": "1.0.0b6",
+        "pear2/net_transmitter": "1.0.0b1"
+    }
+}

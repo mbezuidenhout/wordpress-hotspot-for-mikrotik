@@ -122,6 +122,11 @@ class Hotspot_For_Mikrotik {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-hotspot-for-mikrotik-public.php';
 
+		/**
+		 * Composer libraries
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+
 		$this->loader = new Hotspot_For_Mikrotik_Loader();
 
 	}
