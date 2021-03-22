@@ -164,6 +164,7 @@ class Hotspot_For_Mikrotik {
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_settings_page', 50 );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
+		$this->loader->add_filter( 'plugin_action_links_' . plugin_basename( HOTSPOT_FOR_MIKROTIK_PLUGIN_FILE ), $plugin_admin, 'plugin_links' );
 	}
 
 	/**

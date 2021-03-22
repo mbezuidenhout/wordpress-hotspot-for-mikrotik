@@ -169,4 +169,26 @@ class Hotspot_For_Mikrotik_Admin {
         </div>
 		<?php
 	}
+
+	/**
+	 * Add a direct link from the plugin page to the settings page for this plugin.
+	 *
+	 * @param array $links An array of links to display in the WordPress plugin list.
+	 *
+	 * @return array
+	 */
+	public function plugin_links( $links ) {
+		$settings_url = add_query_arg(
+			array(
+				'page'    => 'mikrotik-hotspot-settings',
+			),
+			admin_url( 'admin.php' )
+		);
+
+		$plugin_links = array(
+			'<a href="' . esc_url( $settings_url ) . '">' . __( 'Settings' ) . '</a>',
+		);
+
+		return array_merge( $plugin_links, $links );
+	}
 }

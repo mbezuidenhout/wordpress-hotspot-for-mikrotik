@@ -113,7 +113,7 @@ class Hotspot_For_Mikrotik_Public {
     }
 
     /**
-     * Usage: https://<server>/mikrotik/login?username=<username>&password=<password>&product_id=<product_id>
+     * Usage: ://<server>/mikrotik/login
      *
      * @throws Exception
      */
