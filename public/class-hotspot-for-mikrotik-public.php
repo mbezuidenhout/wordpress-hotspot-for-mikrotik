@@ -109,7 +109,7 @@ class Hotspot_For_Mikrotik_Public {
             require_once plugin_dir_path( __DIR__ ) . 'includes' . DIRECTORY_SEPARATOR . 'class-wp-route.php';
         }
 
-        WP_Route::get( 'mikrotik/login', array( $this, 'get_login_page' ) );
+        WP_Route::any( 'mikrotik/login', array( $this, 'get_login_page' ) );
     }
 
     /**
@@ -125,7 +125,7 @@ class Hotspot_For_Mikrotik_Public {
             'trial'      => 'no'
         );
         wp_register_style( 'mikrotik',  plugin_dir_url( __FILE__ ) . 'css/mikrotik.css', array(), $this->version, 'all' );
-        wp_register_script( 'mikrotik-md5', 'js/mikrotik-md5.js', array(), $this->version, false );
+        wp_register_script( 'mikrotik-md5', plugin_dir_url( __FILE__ ) . 'js/mikrotik-md5.js', array(), $this->version, false );
 	    $args = wp_parse_args( sanitize_post( $_REQUEST  ), $defaults );  // phpcs:ignore WordPress.Security.NonceVerification
         include plugin_dir_path( __DIR__ ) . 'templates' . DIRECTORY_SEPARATOR . 'login.php';
     }

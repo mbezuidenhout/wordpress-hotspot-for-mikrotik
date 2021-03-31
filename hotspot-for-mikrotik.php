@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -8,14 +7,15 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://profiles.wordpress.org/mbezuidenhout/
- * @since             1.0.0
- * @package           Hotspot_For_Mikrotik
+ * @package    Hotspot_For_Mikrotik
+ * @author     Marius Bezuidenhout
+ * @link       https://profiles.wordpress.org/mbezuidenhout/
+ * @since      1.0.0
  *
  * @wordpress-plugin
  * Plugin Name:       Hotspot for Mikrotik routers
  * Plugin URI:        https://github.com/mbezuidenhout/wordpress-hotspot-for-mirkotik
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Replace the login.html page on your Mikrotik router and create your own hotspot login page.
  * Version:           1.0.0
  * Requires at least: 4.9
  * Tested up to:      5.7.0
@@ -28,7 +28,7 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (!defined( 'WPINC' )) {
 	die;
 }
 
@@ -53,7 +53,7 @@ function activate_hotspot_for_mikrotik() {
 	Hotspot_For_Mikrotik_Activator::activate();
 }
 
-/**
+/*
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-hotspot-for-mikrotik-deactivator.php
  */
