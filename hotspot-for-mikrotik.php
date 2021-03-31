@@ -28,7 +28,7 @@
  */
 
 // If this file is called directly, abort.
-if (!defined( 'WPINC' )) {
+if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
@@ -53,7 +53,7 @@ function activate_hotspot_for_mikrotik() {
 	Hotspot_For_Mikrotik_Activator::activate();
 }
 
-/*
+/**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-hotspot-for-mikrotik-deactivator.php
  */

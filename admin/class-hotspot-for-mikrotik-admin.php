@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -44,13 +43,13 @@ class Hotspot_For_Mikrotik_Admin {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of this plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -101,18 +100,19 @@ class Hotspot_For_Mikrotik_Admin {
 	}
 
 	public function plugin_section_text( $section ) {
-        $test = 1;
-    }
+		$test = 1;
+	}
 
-    public function mikrotik_hotspot_field( $args ) {
-	    global $wp_settings_fields;
-	    $options = get_option($args['label_for']);
-	    switch($args['type']) {
-            case 'text':
-	            echo "<input name=\"" . $args['label_for'] . "\" type=\"" . $args['type'] . "\" id=\"" . $args['label_for'] . "\" value=\"\" class=\"regular-text\">";
-	            break;
-	    }
-    }
+	public function mikrotik_hotspot_field( $args ) {
+		global $wp_settings_fields;
+		$options = get_option( $args['label_for'] );
+		switch ( $args['type'] ) {
+			case 'text':
+				echo "<input name=\"" . $args['label_for'] . "\" type=\"" . $args['type'] . "\" id=\"" . $args['label_for'] . "\" value=\"\" class=\"regular-text\">";
+				break;
+		}
+
+	}
 
 	/**
 	 * Register plugin settings
@@ -120,28 +120,29 @@ class Hotspot_For_Mikrotik_Admin {
 	 * @since    1.0.0
 	 */
 	public function register_settings() {
-		add_settings_section( 'router_settings', 'Router Settings', [ $this, 'plugin_section_text' ], 'mikrotik_hotspot_plugin' );
+		add_settings_section( 'router_settings', 'Router Settings', array( $this, 'plugin_section_text' ), 'mikrotik_hotspot_plugin' );
 
 		add_settings_field(
-		        'hotspot_admin_username',
-                'Hotspot Admin Username',
-                [ $this, 'mikrotik_hotspot_field' ],
-                'mikrotik_hotspot_plugin',
-                'router_settings',
-                [
-                    'label_for' => 'username',
-                    'type'      => 'text',
-                ] );
+			'hotspot_admin_username',
+			'Hotspot Admin Username',
+			array( $this, 'mikrotik_hotspot_field' ),
+			'mikrotik_hotspot_plugin',
+			'router_settings',
+			array(
+				'label_for' => 'username',
+				'type'      => 'text',
+			),
+		);
 		add_settings_field(
-            'hotspot_admin_password',
-            'Hotspot Admin Password',
-            [ $this, 'mikrotik_hotspot_field' ],
-            'mikrotik_hotspot_plugin',
-            'router_settings',
-            [
-                    'label_for' => 'password'
-            ]
-        );
+			'hotspot_admin_password',
+			'Hotspot Admin Password',
+			array( $this, 'mikrotik_hotspot_field' ),
+			'mikrotik_hotspot_plugin',
+			'router_settings',
+			array(
+				'label_for' => 'password',
+			),
+		);
 		register_setting( 'mikrotik_hotspot_plugin_options', 'mikrotik_hotspot_username' );
 	}
 
@@ -151,11 +152,11 @@ class Hotspot_For_Mikrotik_Admin {
 	 * @since    1.0.0
 	 */
 	public function add_settings_page() {
-		add_options_page( __('Mikrotik Hotspot Settings'), __('Mikrotik Hotspot'), 'manage_options', 'mikrotik-hotspot-settings', [ $this, 'render_settings_page' ] );
+		add_options_page( __('Mikrotik Hotspot Settings'), __('Mikrotik Hotspot'), 'manage_options', 'mikrotik-hotspot-settings', array( $this, 'render_settings_page' ) );
 	}
 
 	public function render_settings_page( $args ) {
-	    global $wp_settings_sections;
+		global $wp_settings_sections;
 		?>
         <div class="wrap">
 		<h1><?php echo esc_html(get_admin_page_title()) ?></h1>
